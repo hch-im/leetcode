@@ -2,6 +2,11 @@
 #define COMMON_H_
 
 #include <cstdlib>
+#include <iostream>
+#include <cstring>
+#include <string>
+
+using namespace std;
 
 struct TreeNode {
 	int val;
