@@ -8,3 +8,14 @@ TEST(SearchRange, searchRange){
 	EXPECT_EQ(v[0], 3);
 	EXPECT_EQ(v[1], 4);
 }
+
+TEST(SearchRange, searchInsert){
+	SearchRange sr;
+	int A[] = {1};
+	EXPECT_EQ(0, sr.searchInsert(A, 1, 0));
+	EXPECT_EQ(1, sr.searchInsert(A, 1, 2));	
+
+	int B[] = {1, 3, 5, 7};
+	EXPECT_EQ(2, sr.searchInsert(B, 4, 5));
+	EXPECT_EQ(1, sr.searchInsert(B, 4, 2));		
+}
