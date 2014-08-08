@@ -3,6 +3,8 @@
 
 #include "common.h"
 
+class SearchMatrix{
+public:
 /*
 Write an efficient algorithm that searches for a value in an 
 m x n matrix. This matrix has the following properties:
@@ -21,10 +23,13 @@ Consider the following matrix:
   [23, 30, 34, 50]
 ]
 Given target = 3, return true.
- */
-class SearchMatrix{
-public:
+ */	
     bool searchMatrix(vector<vector<int> > &matrix, int target);
+/*
+Given a m x n matrix, if an element is 0, set its entire row and column 
+to 0. Do it in place.
+ */    
+	void setZeroes(vector<vector<int> > &matrix);
 };
 
 #endif

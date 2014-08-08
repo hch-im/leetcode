@@ -20,4 +20,6 @@ struct TreeNode {
 
 int binarySearch(int A[], int start, int end, int target);
 
+void printMatrix(vector< vector<int> > &matrix);
+
 #endif

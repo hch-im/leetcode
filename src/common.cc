@@ -15,3 +15,11 @@ int binarySearch(int A[], int start, int end, int target){
 	}
 	return -1;	
 }
+
+void printMatrix(vector< vector<int> > &matrix){
+	for(int i = 0; i < matrix.size(); i++){
+		for(int j = 0; j < matrix[0].size(); j++)
+			cout<<matrix[i][j]<<" ";
+		cout<<" "<<endl;
+	}
+}
