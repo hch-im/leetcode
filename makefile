@@ -7,7 +7,7 @@ OBJS=${SRCS:.cc=.o}
 all: test
 
 test: $(OBJS)
-	$(CC) -o test $(OBJS) -lpthread -lgtest
+	$(CC) $(CFLAGS) -o test $(OBJS) -lpthread -lgtest
 
 %.o: %.c
 	$(CC) -c $^ -o $@ $(CFLAGS)

@@ -39,7 +39,7 @@ void SearchMatrix::setZeroes(vector<vector<int> > &matrix) {
 			}
 		}
 	}
-	printMatrix(matrix);
+
 	//update the table except the first row
 	for(int i = matrix.size()-1; i >= 0; i--){
 		for(int j = matrix[0].size() - 1; j >= 0; j--){
@@ -51,6 +51,4 @@ void SearchMatrix::setZeroes(vector<vector<int> > &matrix) {
 			}
 		}
 	}	
-	cout<<" "<<endl;
-	printMatrix(matrix);	
 }
