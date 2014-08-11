@@ -1,4 +1,8 @@
+#ifndef COMMON_TEST_H_
+#define COMMON_TEST_H_
+
 #include <gtest/gtest.h>
+#include "common.h"
 
 template<typename T, size_t size>
 ::testing::AssertionResult ArrayEqual(const T (&expected)[size],
@@ -12,3 +16,7 @@ template<typename T, size_t size>
     }
     return ::testing::AssertionSuccess();
 }
+
+::testing::AssertionResult ListEqual(int expected[], int size, ListNode * head);
+
+#endif

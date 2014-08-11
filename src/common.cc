@@ -23,3 +23,18 @@ void printMatrix(vector< vector<int> > &matrix){
 		cout<<" "<<endl;
 	}
 }
+
+ListNode * arrayToList(int A[], int n){
+	if(n == 0)
+		return NULL;
+
+	ListNode * head = new ListNode(A[0]);
+	ListNode * ptr = head;
+	
+	for(int i = 1; i < n; i++){
+		ptr->next = new ListNode(A[i]);
+		ptr = ptr->next;
+	}
+
+	return head;
+}
