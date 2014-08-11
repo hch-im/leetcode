@@ -57,3 +57,23 @@ TEST(SearchMatrix, setZeros){
 		}
 	}	
 }
+
+TEST(SearchMatrix, spiralOrder){
+	int values[3][4] = {{1, 3, 5, 7}, 
+						{10, 11, 16, 20}, 
+						{23, 30, 34, 50}};
+	vector<int> v1(values[0], values[0] + sizeof(values[0])/sizeof(int));
+	vector<int> v2(values[1], values[1] + sizeof(values[1])/sizeof(int));
+	vector<int> v3(values[2], values[2] + sizeof(values[2])/sizeof(int));
+
+	vector< vector<int> > matrix(3);
+	matrix[0] = v1;
+	matrix[1] = v2;
+	matrix[2] = v3;
+	SearchMatrix sm;
+	vector<int> v = sm.spiralOrder(matrix);	
+	int result[] = {1, 3, 5, 7, 20, 50, 34, 30, 23, 10, 11, 16};
+	for(int j = 0; j < v.size(); j++){
+		EXPECT_EQ(result[j], v[j]);	
+	}
+}

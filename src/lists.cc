@@ -41,7 +41,6 @@ int Lists::length(ListNode * head){
 //next points to the next node
 ListNode * Lists::mergeNodes(ListNode * head, ListNode ** next, int n){
     if(n <= 0) return NULL;
-    cout<<"head: "<<head->val<<" n="<< n <<endl;
 
     if(n == 1){
     	*next = (*next)->next;
@@ -51,10 +50,7 @@ ListNode * Lists::mergeNodes(ListNode * head, ListNode ** next, int n){
 
     int left = n / 2, right = n - left;    	
     ListNode * leftNode = mergeNodes(head, next, left);
-    ListNode * rightNode = mergeNodes(*next, next, right);
-    cout<<"left len: "<<left<< " right len: " <<right<<endl;
-	cout<<"left is "<<leftNode->val<<endl;
-	cout<<"right is "<<rightNode->val<<endl;    
+    ListNode * rightNode = mergeNodes(*next, next, right); 
     return mergeSortedList(leftNode, rightNode);
 }
 

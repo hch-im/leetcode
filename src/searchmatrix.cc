@@ -52,3 +52,40 @@ void SearchMatrix::setZeroes(vector<vector<int> > &matrix) {
 		}
 	}	
 }
+
+vector<int> SearchMatrix::spiralOrder(vector<vector<int> > &matrix){
+	int left = 0, right = matrix[0].size() - 1,
+		top = 0, bottom = matrix.size() - 1;
+	int dir = 0, //0 : left->right 1 : top->bottom 2 : right->left 3 : bottom->top	
+		len = matrix.size() * matrix[0].size(),
+		i;
+	vector<int> v;
+
+	while(len > 0){
+		switch(dir){
+			case 0:
+				for(i = left; i <=right; i++, len--)
+					v.push_back(matrix[top][i]);
+				top++;
+			break;
+			case 1:
+				for(i = top; i <= bottom; i++, len--)
+					v.push_back(matrix[i][right]);
+				right--;
+			break;
+			case 2:
+				for(i = right; i >= left; i--, len--)
+					v.push_back(matrix[bottom][i]);
+				bottom--;
+			break;
+			case 3:
+				for(i = bottom; i >= top; i--, len--)
+					v.push_back(matrix[i][left]);
+				left++;
+			break;
+		}
+		dir = (dir + 1) % 4;
+	}
+
+	return v;
+}
