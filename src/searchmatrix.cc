@@ -54,12 +54,14 @@ void SearchMatrix::setZeroes(vector<vector<int> > &matrix) {
 }
 
 vector<int> SearchMatrix::spiralOrder(vector<vector<int> > &matrix){
+	vector<int> v;
+	if(matrix.size() == 0)
+		return v;
 	int left = 0, right = matrix[0].size() - 1,
 		top = 0, bottom = matrix.size() - 1;
 	int dir = 0, //0 : left->right 1 : top->bottom 2 : right->left 3 : bottom->top	
 		len = matrix.size() * matrix[0].size(),
 		i;
-	vector<int> v;
 
 	while(len > 0){
 		switch(dir){

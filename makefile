@@ -1,6 +1,6 @@
 CC=g++
 IDIR=/usr/local/include
-CFLAGS:=-I$(IDIR)
+CFLAGS:=-I$(IDIR) -std=c++11
 SRCS=$(wildcard src/*.cc)
 OBJS=${SRCS:.cc=.o}
 
