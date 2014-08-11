@@ -77,3 +77,16 @@ TEST(SearchMatrix, spiralOrder){
 		EXPECT_EQ(result[j], v[j]);	
 	}
 }
+
+TEST(SearchMatrix, generateMatrix){
+	int values[3][3] = {{1, 2, 3}, 
+						{8, 9, 4}, 
+						{7, 6, 5}};
+	SearchMatrix sm;
+	vector< vector<int> > v = sm.generateMatrix(3);	
+
+	for(int i = 0; i < 3; i++)
+	for(int j = 0; j < 3; j++){
+		EXPECT_EQ(v[i][j], values[i][j]);	
+	}
+}

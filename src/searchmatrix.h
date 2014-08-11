@@ -44,6 +44,21 @@ Given the following matrix:
 You should return [1,2,3,6,9,8,7,4,5].
  */	
 	vector<int> spiralOrder(vector<vector<int> > &matrix);
+/*
+Given an integer n, generate a square matrix filled with elements from 1 to n2 in spiral order.
+
+For example,
+Given n = 3,
+
+You should return the following matrix:
+[
+ [ 1, 2, 3 ],
+ [ 8, 9, 4 ],
+ [ 7, 6, 5 ]
+]
+ */
+	vector<vector<int> > generateMatrix(int n);
+	
 };
 
 #endif

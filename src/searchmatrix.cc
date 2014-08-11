@@ -91,3 +91,46 @@ vector<int> SearchMatrix::spiralOrder(vector<vector<int> > &matrix){
 
 	return v;
 }
+
+vector<vector<int> > SearchMatrix::generateMatrix(int n){
+	vector< vector<int> > v(n);
+	if(n == 0)
+		return v;
+
+	for(int i = 0; i < n; i++)
+		v[i] = vector<int>(n);
+
+	int left = 0, right = n - 1,
+		top = 0, bottom = n - 1;
+	int dir = 0, //0 : left->right 1 : top->bottom 2 : right->left 3 : bottom->top	
+		len = n * n,
+		i, j = 1;
+
+	while(j <= len){
+		switch(dir){
+			case 0:
+				for(i = left; i <=right; i++, j++)
+					v[top][i] = j;
+				top++;
+			break;
+			case 1:
+				for(i = top; i <= bottom; i++, j++)
+					v[i][right] = j;
+				right--;
+			break;
+			case 2:
+				for(i = right; i >= left; i--, j++)
+					v[bottom][i] = j;
+				bottom--;
+			break;
+			case 3:
+				for(i = bottom; i >= top; i--, j++)
+					v[i][left] = j;
+				left++;
+			break;
+		}
+		dir = (dir + 1) % 4;
+	}
+
+	return v;	
+}
