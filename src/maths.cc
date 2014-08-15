@@ -23,7 +23,7 @@ int Maths::sqrt(int x){
  	int p = 0;
  	int remain = 0;
  	int val1, val2;
- 	
+
  	while(x >> i == 0)
  		i -= 2;
 
@@ -38,4 +38,44 @@ int Maths::sqrt(int x){
  			remain = val1;
  	}
     return p;
+}
+
+int Maths::atoi(const char *str){
+	if(str == NULL || *str == 0)
+		return 0;
+	
+	const char * p = str;
+	while(*p == ' ')
+		p++;
+
+	int result = 0;
+	int ch;
+	bool negative = false;
+	if(*p == '-'){
+		negative = true;
+		p++;
+	}else if(*p == '+'){
+		p++;
+	}
+	cout<<" \r\n "<<str<<endl;
+	while(*p != 0){
+		ch = *(p++) - '0';
+		if(ch > 9 || ch < 0)
+			break;
+		//overflow check
+		int tmp = result * 10 + ch;
+		//use minus method to detect overflow
+		if(INT_MAX/10 < result || INT_MAX - ch < result * 10){
+			if(negative){
+				result = INT_MIN;
+			}else{
+				result = INT_MAX;
+			}
+			break;
+		}
+		result = tmp;	
+		cout<<result<<endl;	
+	}
+
+	return negative ? result * -1 : result;
 }
