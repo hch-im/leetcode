@@ -135,3 +135,64 @@ vector<vector<int> > SearchMatrix::generateMatrix(int n){
 
 	return v;	
 }
+
+/*
+X X X X
+X O O X
+X X O X
+X O X X
+
+1. start from for cells on edge. use epidemic method to change
+   cells that is O into P.
+2. access all cells of the matrix, change O to X, and P to O.  
+*/
+void SearchMatrix::solve(vector<vector<char> > &board){
+	if(board.size() == 0 || board[0].size() == 0)
+		return;
+	stack<pair<int, int> > s;
+	int i, j;
+
+	i = board.size() - 1;
+	for(j = 0; j < (int)board[0].size(); j++){
+		if(board[0][j] == 'O')
+			s.push(make_pair(0, j));
+		if( i > 0 && board[i][j] == 'O')
+			s.push(make_pair(i, j));
+	}
+
+	j = board[0].size() - 1;
+	for(i = 1;  i < (int)board.size() - 1; i++){
+		if(board[i][0] == 'O')
+			s.push(make_pair(i, 0));
+		if( j > 0 && board[i][j] == 'O')
+			s.push(make_pair(i, j));
+	}
+
+	//epidemic
+	pair<int, int> p;
+	while(!s.empty()){
+		p = s.top();
+		s.pop();
+		if(board[p.first][p.second] == 'P')
+			continue;
+		board[p.first][p.second] = 'P';
+		//check 4 neighbors
+		if(p.first - 1 >= 0 && board[p.first - 1][p.second] == 'O')
+			s.push(make_pair(p.first - 1, p.second));
+		if(p.second - 1 >= 0 && board[p.first][p.second - 1] == 'O')
+			s.push(make_pair(p.first, p.second - 1));
+		if(p.first + 1 < (int)board.size() && board[p.first + 1][p.second] == 'O')
+			s.push(make_pair(p.first + 1, p.second));					
+		if(p.second + 1 < (int)board[0].size() && board[p.first][p.second + 1] == 'O')
+			s.push(make_pair(p.first, p.second + 1));
+	}
+
+	for(i = 0; i < (int)board.size(); i++){
+		for(j = 0; j < (int)board[0].size(); j++){
+			if(board[i][j] == 'O')
+				board[i][j] = 'X';
+			else if(board[i][j] == 'P')
+				board[i][j] = 'O';
+		}
+	}
+}

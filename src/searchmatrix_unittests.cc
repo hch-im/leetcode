@@ -92,3 +92,10 @@ TEST(SearchMatrix, generateMatrix){
 		EXPECT_EQ(v[i][j], values[i][j]);	
 	}
 }
+
+TEST(SearchMatrix, solveSurroundedRegions){
+	SearchMatrix sm;
+	vector< vector<char> > v{{'X'}};	
+	sm.solve(v);
+	EXPECT_EQ('X', v[0][0]);
+}
