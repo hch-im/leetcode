@@ -28,6 +28,10 @@ If S = [1,2,3], a solution is:
 ]
 */
 	vector<vector<int> > subsets(vector<int> &S);
+/*
+
+*/	
+    vector<vector<int> > subsetsWithDup(vector<int> &S);	
 };
 
 #endif
