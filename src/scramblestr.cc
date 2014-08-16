@@ -3,7 +3,7 @@
 bool ScrambleString::isScramble(string s1, string s2) {
 	if(s1.length() != s2.length())
 		return false;
-	int len = s1.size(), left, right, end;
+	int len = s1.size(), end;
 	//DP method
 	//use a 3-dimension array to save the repeated results
 	//mark[k][i][j] saves the result of s1[i..i+k] and s2[j..j+k]

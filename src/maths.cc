@@ -57,7 +57,7 @@ int Maths::atoi(const char *str){
 	}else if(*p == '+'){
 		p++;
 	}
-	cout<<" \r\n "<<str<<endl;
+//	cout<<" \r\n "<<str<<endl;
 	while(*p != 0){
 		ch = *(p++) - '0';
 		if(ch > 9 || ch < 0)
@@ -74,7 +74,7 @@ int Maths::atoi(const char *str){
 			break;
 		}
 		result = tmp;	
-		cout<<result<<endl;	
+//		cout<<result<<endl;	
 	}
 
 	return negative ? result * -1 : result;

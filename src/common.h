@@ -2,12 +2,14 @@
 #define COMMON_H_
 
 #include <cstdlib>
+#include <cstdint>
 #include <iostream>
 #include <cstring>
 #include <string>
 #include <vector>
 #include <cmath>
 #include <stack>
+#include <climits>
 
 using namespace std;
 

@@ -50,12 +50,14 @@ TEST(SearchMatrix, setZeros){
 	int result[3][4] = {{0, 0, 0, 0}, 
 						{0, 0, 0, 0}, 
 						{0, 1, 0, 0}};					
+
 	sm.setZeroes(matrix);			
-	for(int i = 0; i < matrix.size(); i++){
-		for(int j = 0; j < matrix[0].size(); j++){
+	
+	for(unsigned int i = 0; i < matrix.size(); i++){
+		for(unsigned int j = 0; j < matrix[0].size(); j++){
 			EXPECT_EQ(result[i][j], matrix[i][j]);	
 		}
-	}	
+	}		
 }
 
 TEST(SearchMatrix, spiralOrder){
@@ -73,7 +75,7 @@ TEST(SearchMatrix, spiralOrder){
 	SearchMatrix sm;
 	vector<int> v = sm.spiralOrder(matrix);	
 	int result[] = {1, 3, 5, 7, 20, 50, 34, 30, 23, 10, 11, 16};
-	for(int j = 0; j < v.size(); j++){
+	for(unsigned int j = 0; j < v.size(); j++){
 		EXPECT_EQ(result[j], v[j]);	
 	}
 }
