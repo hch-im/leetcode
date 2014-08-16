@@ -13,3 +13,24 @@ bool SameTree::isSameTree(TreeNode *p, TreeNode *q) {
 
 	return isSameTree(p->left, q->left) && isSameTree(p->right, q->right);
 }
+
+void dfs(TreeNode * node, int val, int * result){
+	if(node == NULL)
+		return;
+	val = val * 10 + node->val;	
+	if(node->left == NULL && node->right == NULL){
+		*result += val;
+		return;
+	}
+	dfs(node->left, val, result);
+	dfs(node->right, val, result);
+}
+
+int SameTree::sumNumbers(TreeNode *root){
+	if(root == NULL)
+		return 0;
+	int result = 0;	
+	dfs(root, 0, &result);
+
+	return result;
+}
