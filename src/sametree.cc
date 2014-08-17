@@ -34,3 +34,20 @@ int SameTree::sumNumbers(TreeNode *root){
 
 	return result;
 }
+
+bool dfsSymmetric(TreeNode * left, TreeNode * right){
+	if(left == NULL && right == NULL)
+		return true;
+	if(left == NULL || right == NULL)
+		return false;
+	if(left->val != right->val)
+		return false;
+	return dfsSymmetric(left->left, right->right)
+			&& dfsSymmetric(left->right, right->left);
+}
+
+bool SameTree::isSymmetric(TreeNode * root){
+	if(root == NULL)
+		return true;
+	return dfsSymmetric(root->left, root->right);
+}
