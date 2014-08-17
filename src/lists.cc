@@ -61,3 +61,23 @@ ListNode * Lists::sortList(ListNode * head){
 
 	return mergeNodes(head, &head, len);
 }
+
+ListNode *swapPairs(ListNode *head){
+	if(head == NULL || head->next == NULL)
+		return head;
+	ListNode * ptr = head;
+	head = head->next;
+	ptr->next = head->next;
+	head->next = ptr;
+
+	ListNode * tmp;
+	while(ptr->next != NULL && ptr->next->next != NULL){
+		tmp = ptr->next->next;
+		ptr->next->next = tmp->next;
+		tmp->next = ptr->next;
+		ptr->next = tmp;
+		ptr = ptr->next->next;
+	}
+	return head;
+
+}
