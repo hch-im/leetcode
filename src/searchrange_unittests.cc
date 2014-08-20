@@ -19,3 +19,9 @@ TEST(SearchRange, searchInsert){
 	EXPECT_EQ(2, sr.searchInsert(B, 4, 5));
 	EXPECT_EQ(1, sr.searchInsert(B, 4, 2));		
 }
+
+TEST(SearchRange, trap){
+	SearchRange sr;
+	int A[] = {0,1,0,2,1,0,1,3,2,1,2,1};
+	EXPECT_EQ(6, sr.trap(A, 12));
+}

@@ -44,3 +44,38 @@ int SearchRange::searchInsert(int A[], int n, int target){
 	return A[mid] > target ? mid : mid + 1;	
 }
 
+/*
+	1. Find the index i of the largest value.
+	2. from 0 to i , from n-1 to i
+	   add the concaves.
+*/
+int SearchRange::trap(int A[], int n){
+	if(n == 0)
+		return 0;
+
+	int result = 0, tmpResult = 0, top = 0, tmpTop = 0;
+	for(int i = 1; i < n; i++){
+		if(A[i] < A[tmpTop])
+			tmpResult += A[tmpTop] - A[i];
+		else{//A[i] >= A[top]
+			result += tmpResult;
+			tmpResult = 0;
+			tmpTop = i;
+		}			
+	}
+
+	tmpResult = 0;
+	top = tmpTop;
+	tmpTop = n - 1;
+	for(int i = n - 2; i >= top; i--){
+		if(A[i] < A[tmpTop])
+			tmpResult += A[tmpTop] - A[i];
+		else{//A[i] >= A[top]
+			result += tmpResult;
+			tmpResult = 0;
+			tmpTop = i;
+		}				
+	}
+
+	return result;
+}
