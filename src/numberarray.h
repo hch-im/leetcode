@@ -3,7 +3,7 @@
 
 #include "common.h"
 
-class SingleNumber{
+class NumberArray{
 public:
 /*
 Given an array of integers, every element appears twice except for one. 

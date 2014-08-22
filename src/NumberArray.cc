@@ -1,6 +1,6 @@
-#include "singlenumber.h"
+#include "numberarray.h"
 
-int SingleNumber::singleNumber(int A[], int n){
+int NumberArray::singleNumber(int A[], int n){
 	int result = 0;
 	for(int i = 0; i < n; i++)
 		result = result ^ A[i];
@@ -8,7 +8,7 @@ int SingleNumber::singleNumber(int A[], int n){
 	return result;
 }
 
-int SingleNumber::singleNumberII(int A[], int n){
+int NumberArray::singleNumberII(int A[], int n){
 	int result = 0;
 	int bits[32];
 
