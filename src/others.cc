@@ -45,3 +45,58 @@ vector<TreeNode *> generateSubTrees(int start, int end){
 vector<TreeNode *> Others::generateTrees(int n){
 	return generateSubTrees(1, n);
 }
+
+int Others::uniquePaths(int m, int n){
+	if(m <= 1 || n <= 1)
+		return 1;
+
+	vector<int> v(m);
+	//init v as the number of paths that start from the cells in
+	//the last column
+	for(int i = 0; i < m; i++)
+		v[i] = 1;
+
+	int tmp;
+	for(int i = n - 2; i >= 0; i--){
+		tmp = 1;//init tmp as the number of paths that start
+		        //from one of the cell in the last row
+		for(int j = m - 2; j >= 0; j--){
+			tmp = tmp + v[j];
+			v[j] = tmp;
+		}
+	}
+
+	return v[0];
+}
+
+int Others::uniquePathsWithObstacles(vector<vector<int> > &obstacleGrid){
+	if(obstacleGrid.size() == 0)
+		return 0;
+	vector<int> col(obstacleGrid.size());
+	vector<int> row(obstacleGrid[0].size());
+	//init col as the number of paths that start from the cells in
+	//the last column
+	for(int i = (int)obstacleGrid.size() - 1; i >= 0; i--){
+		if(obstacleGrid[i][obstacleGrid[0].size() - 1] == 1)
+			break;
+		col[i] = 1;
+	}
+	for(int i = (int)obstacleGrid[0].size() - 1; i >= 0; i--){
+		if(obstacleGrid[obstacleGrid.size() - 1][i] == 1)
+			break;
+		row[i] = 1;
+	}
+	if(col.size() == 1u)//only one row
+		return row[0];	
+	if(row.size() == 1u)//only one column
+		return col[0];
+	int tmp;
+	for(int i = (int)obstacleGrid.size() - 2; i >= 0; i--){
+		for(int j = (int)obstacleGrid[0].size() - 2; j >= 0; j--){
+			tmp = obstacleGrid[i][j] == 1 ? 0 : col[i] + row[j];
+			col[i] = row[j] = tmp;
+		}
+	}
+
+	return col[0];	
+}
