@@ -20,3 +20,13 @@ TEST(NumberArray, singleNumberII){
 	int B[] = {4, 4, 1, 1, 2, 2, 3, 3, 2, 3, 1};
 	EXPECT_EQ(4, na.singleNumberII(B, 11));
 }
+
+TEST(NumberArray, twoSum){
+	NumberArray na;
+
+	vector<int> A = {2, 7, 11, 15};
+	vector<int> r = na.twoSum(A, 13);
+	ASSERT_EQ(2, (int)r.size());
+	EXPECT_EQ(r[0], 1);
+	EXPECT_EQ(r[1], 3);
+}

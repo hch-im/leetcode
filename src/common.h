@@ -14,6 +14,7 @@
 #include <unordered_map>
 #include <utility>
 #include <stack>
+#include <algorithm>
 
 using namespace std;
 

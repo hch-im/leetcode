@@ -25,3 +25,17 @@ int NumberArray::singleNumberII(int A[], int n){
 
 	return result;
 }
+
+vector<int> NumberArray::twoSum(vector<int> &numbers, int target){
+	vector<int> result;
+	unordered_map<int, int> map;
+	for(int i = 0; i < (int)numbers.size(); i++){
+		if(map.find(target - numbers[i]) != map.end()){
+			result.push_back(map[target - numbers[i]]);
+			result.push_back(i + 1);
+			break;
+		}
+		map[numbers[i]] = i + 1;
+	}
+	return result;
+}
