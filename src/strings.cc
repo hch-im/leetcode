@@ -67,3 +67,31 @@ bool Strings::isPalindrome(string s){
 
 	return true;
 }
+
+bool Strings::isValid(string s){
+	stack<char> st;
+	char pair;
+	for (int i = 0; i < (int)s.size(); ++i){
+		if(st.empty()){
+			st.push(s[i]);
+			continue;
+		}
+		switch(st.top()){
+			case '[':
+				pair = ']';
+				break;
+			case '{':
+				pair = '}';
+				break;
+			case '(':
+				pair = ')';
+				break;
+			default:
+				return false;
+		}
+		if(s[i] == pair)
+			st.pop();
+		else st.push(s[i]);
+	}
+	return st.empty();
+}
