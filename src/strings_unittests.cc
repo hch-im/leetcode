@@ -1,8 +1,8 @@
 #include "common_test.h"
-#include "substring.h"
+#include "strings.h"
 
-TEST(SubString, findSubstring){
-	SubString ss;
+TEST(Strings, findSubstring){
+	Strings ss;
 	vector<string> L{"foo", "bar"};
 	vector<int> result = ss.findSubstring("barfoothefoobarman", L);
 	ASSERT_EQ(2, (int)result.size());

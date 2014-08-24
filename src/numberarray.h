@@ -1,5 +1,5 @@
-#ifndef SINGLENUMBER_H_
-#define SINGLENUMBER_H_
+#ifndef NUMBERARRAY_H_
+#define NUMBERARRAY_H_
 
 #include "common.h"
 
