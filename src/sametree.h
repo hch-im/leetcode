@@ -31,7 +31,8 @@ Return the sum = 12 + 13 = 25.
 /*
 Symmetric Tree
 
-Given a binary tree, check whether it is a mirror of itself (ie, symmetric around its center).
+Given a binary tree, check whether it is a mirror of itself (ie, symmetric 
+around its center).
 
 For example, this binary tree is symmetric:
 
@@ -47,7 +48,21 @@ But the following is not:
    \   \
    3    3
 */    
-	bool isSymmetric(TreeNode * root);   
+   bool isSymmetric(TreeNode * root);  
+/*
+Validate Binary Search Tree 
+
+Given a binary tree, determine if it is a valid binary search tree (BST).
+
+Assume a BST is defined as follows:
+
+The left subtree of a node contains only nodes with keys less than the node's 
+key.
+The right subtree of a node contains only nodes with keys greater than the 
+node's key.
+Both the left and right subtrees must also be binary search trees.
+*/   
+    bool isValidBST(TreeNode *root);
 };
 
 #endif

@@ -51,3 +51,22 @@ bool SameTree::isSymmetric(TreeNode * root){
 		return true;
 	return dfsSymmetric(root->left, root->right);
 }
+
+//valid if node->val is within the range (left->val, right->val)
+bool validBSTRecursive(TreeNode * node, TreeNode * left, TreeNode * right){
+	if(node == NULL)
+		return true;
+	if(left != NULL && node->val <= left->val)
+		return false;
+	if(right != NULL && node->val >= right->val)
+		return false;
+	return validBSTRecursive(node->left, left, node) 
+			&& validBSTRecursive(node->right, node, right);
+}
+
+bool SameTree::isValidBST(TreeNode *root){
+	if(root == NULL)
+		return true;
+	return validBSTRecursive(root->left, NULL, root) 
+			&& validBSTRecursive(root->right, root, NULL);
+}
