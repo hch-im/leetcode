@@ -35,7 +35,21 @@ If no valid conversion could be performed, a zero value is returned. If the
 correct value is out of the range of representable values, INT_MAX (2147483647) 
 or INT_MIN (-2147483648) is returned.
 */    
-	int atoi(const char *str);    
+	int atoi(const char *str);   
+
+/*
+Valid Number
+
+Validate if a given string is numeric.
+
+Some examples:
+"0" => true
+" 0.1 " => true
+"abc" => false
+"1 a" => false
+"2e10" => true
+*/	 
+	bool isNumber(const char *s);
 };
 
 #endif

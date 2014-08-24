@@ -79,3 +79,77 @@ int Maths::atoi(const char *str){
 
 	return negative ? result * -1 : result;
 }
+
+/*
+int: ^[+-]?[0-9]+$
+float: ^[+-]?[0-9]*\.[0-9]+$
+scientific: ^[+-]?(([0-9]+)|([0-9]*\.[0-9]+))(e|E)[+-]?[0-9]+$
+*/
+bool Maths::isNumber(const char *s){
+	if(s == NULL)
+		return false;
+	char * start = const_cast<char*>(s);
+	char * end = const_cast<char*>(s + strlen(s));
+	//escape the spaces
+	while(*start == ' ')
+		start++;
+	while((end - 1) >= s && *(end - 1) == ' ')
+		end--;
+	if(*start == '\0')
+		return false;
+
+	char * ptr = start;
+	int preState = -1; //-1: start;  0:+/-;  1: . ;  2: e/E;  3: 0-9;
+	bool isScientific = false, isFloat = false;
+	while(ptr != end){
+		switch(*ptr){
+			case '+':
+			case '-':
+				if(preState == -1 || preState == 2)
+					preState = 0;
+				else return false;
+			break;
+			case 'e':
+			case 'E':
+				if(isScientific) 
+					return false;
+				if((preState == 1 && (ptr - 2) >= start 
+					&& *(ptr - 2) >= '0' && *(ptr - 2) <= '9') 
+					|| preState == 3){
+					isScientific = true;
+					preState = 2;
+				}else return false;
+			break;
+			case '.':
+				if(isScientific || isFloat)
+					return false;
+				if((preState <= 0 && (ptr + 1) != end 
+					&& *(ptr + 1) >= '0' && *(ptr + 1) <= '9') 
+					|| preState == 3){
+					preState = 1;
+					isFloat = true;
+				}else return false;
+			break;
+			case '0':
+			case '1':
+			case '2':
+			case '3':
+			case '4':
+			case '5':
+			case '6':
+			case '7':
+			case '8':
+			case '9':
+				preState = 3;
+			break;
+			default:
+			return false;
+		}
+		ptr++;
+	}
+
+	if(preState == 3 || (preState == 1 && (ptr - 2) >= start 
+					&& *(ptr - 2) >= '0' && *(ptr - 2) <= '9'))
+		return true;
+	else return false;
+}
