@@ -197,7 +197,7 @@ void SearchMatrix::solve(vector<vector<char> > &board){
 	}
 }
 
-vector<string> SearchMatrix::diagnalString(vector<vector<int> > &v){
+vector<string> SearchMatrix::diagonalString(vector<vector<int> > &v){
 	int len = (int)v.size() * 2 - 1;
 	vector<string> result(len);
 	for(int i = 0; i < len; i++)
@@ -210,4 +210,24 @@ vector<string> SearchMatrix::diagnalString(vector<vector<int> > &v){
 	}
 
 	return result;
+}
+
+void SearchMatrix::printDiagonalString(vector<vector<int> > &v){
+	int size = (int)v.size();
+	int len = size * 2 - 1;
+	int i, j;
+	for(int k = 0; k < len; k++){
+		if(k < size){
+			i = 0;
+			j = k;
+		}else{
+			i = k - size + 1;
+			j = size - 1;
+		}
+
+		while(i < size && j >= 0){
+			cout<<v[i++][j--];
+		}
+		cout<<endl;
+	}
 }

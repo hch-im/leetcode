@@ -93,8 +93,8 @@ A =  | 9 3 0 |
 the algorithm should returns
 {"4", "59", "335", "08", "7"}     
 */
-vector<string> diagnalString(vector<vector<int> > &v);
-
+vector<string> diagonalString(vector<vector<int> > &v);
+void printDiagonalString(vector<vector<int> > &v);
 };
 
 #endif

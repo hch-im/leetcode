@@ -100,18 +100,20 @@ TEST(SearchMatrix, solveSurroundedRegions){
 	EXPECT_EQ('X', v[0][0]);
 }
 
-TEST(SearchMatrix, diagnalString){
+TEST(SearchMatrix, diagonalString){
 	vector<vector<int> > v = {{1}};
 	SearchMatrix sm;
-	vector<string> result = sm.diagnalString(v);
+	vector<string> result = sm.diagonalString(v);
 	EXPECT_EQ(1u, result.size());
 
 	vector<vector<int> > v2 = {{3, 6, 7}, 
 							   {4, 6, 8}, 
 							   {9, 8, 0}};
-	vector<string> result2 = sm.diagnalString(v2);
+	vector<string> result2 = sm.diagonalString(v2);
 	EXPECT_EQ(5u, result2.size());	
 	vector<string> expected = {"3", "64", "769", "88", "0"};
 	for(int i = 0; i < 5; i++)
-		EXPECT_EQ(expected[i], result2[i]);			
+		EXPECT_EQ(expected[i], result2[i]);		
+
+	sm.printDiagonalString(v2);	
 }
