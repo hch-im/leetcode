@@ -1,9 +1,9 @@
-#ifndef SORTCOLORS_H_
-#define SORTCOLORS_H_
+#ifndef SORTING_H_
+#define SORTING_H_
 
 #include "common.h"
 
-class SortColors{
+class Sorting{
 
 public:
 /*
@@ -15,6 +15,17 @@ Here, we will use the integers 0, 1, and 2 to represent the color red, white,
 and blue respectively.
  */	
 	void sortColors(int A[], int n);
+
+/*
+Give a string s, in which all chars are either characters from a to z or
+numbers. Sort the chars in the string and return a new string.
+
+For example,
+
+given s = "bacb17da"
+returns "17aabbcd"
+*/
+	string sortString(string s);	
 };
 
 #endif

@@ -1,8 +1,8 @@
-#include "sortcolors.h"
+#include "sorting.h"
 #include "common_test.h"
 
-TEST(SortColors, sortColors1){
-	SortColors sc;
+TEST(Sorting, sortColors1){
+	Sorting sc;
 	int A[] = {1};
 	int A_r[] = {1};
 	sc.sortColors(A, 1);
@@ -19,8 +19,8 @@ TEST(SortColors, sortColors1){
 	EXPECT_TRUE(ArrayEqual(C_r, C));			
 }
 
-TEST(SortColors, sortColors2){
-	SortColors sc;
+TEST(Sorting, sortColors2){
+	Sorting sc;
 	int A[] = {1,1,1};
 	int A_r[] = {1,1,1};
 	sc.sortColors(A, 3);
@@ -37,8 +37,8 @@ TEST(SortColors, sortColors2){
 	EXPECT_TRUE(ArrayEqual(C_r, C));			
 }
 
-TEST(SortColors, sortColors3){
-	SortColors sc;
+TEST(Sorting, sortColors3){
+	Sorting sc;
 	int A[] = {1,1,0};
 	int A_r[] = {0,1,1};
 	sc.sortColors(A, 3);
@@ -58,4 +58,11 @@ TEST(SortColors, sortColors3){
 	int D_r[] = {0,1,2};
 	sc.sortColors(D, 3);
 	EXPECT_TRUE(ArrayEqual(D_r, D));				
+}
+
+TEST(Sorting, sortString){
+	Sorting sc;
+	EXPECT_EQ("", sc.sortString(""));
+	EXPECT_EQ("a", sc.sortString("a"));	
+	EXPECT_EQ("112aabbfzz", sc.sortString("1ab1z2bazf"));	
 }
