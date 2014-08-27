@@ -80,6 +80,21 @@ X X X X
 X O X X
 */
     void solve(vector<vector<char>> &board);
+
+/*
+Given a symmetric integer matrix A, return the strings that formed with
+the numbers on each left-hand diagonals.
+
+For example,
+     | 4 5 3 | 
+A =  | 9 3 0 |
+     | 5 8 7 |
+
+the algorithm should returns
+{"4", "59", "335", "08", "7"}     
+*/
+vector<string> diagnalString(vector<vector<int> > &v);
+
 };
 
 #endif

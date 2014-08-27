@@ -196,3 +196,18 @@ void SearchMatrix::solve(vector<vector<char> > &board){
 		}
 	}
 }
+
+vector<string> SearchMatrix::diagnalString(vector<vector<int> > &v){
+	int len = (int)v.size() * 2 - 1;
+	vector<string> result(len);
+	for(int i = 0; i < len; i++)
+		result[i] = "";
+
+	for(int i = 0; i < (int)v.size(); i++){
+		for(int j = 0; j < (int)v[i].size(); j++){
+			result[i + j] += to_string(v[i][j]);
+		}
+	}
+
+	return result;
+}
