@@ -100,3 +100,56 @@ int Others::uniquePathsWithObstacles(vector<vector<int> > &obstacleGrid){
 
 	return col[0];	
 }
+
+int Others::indexOfDigits(int A, int B){
+	if(B > A) return -1;
+	if(B == A) return 0;
+	int n = 1, m = 1, tmp = A, val = 10;
+	while(tmp >= 10){
+		tmp /= 10;
+		n++;
+	}
+	tmp = B;
+	while(tmp >= 10){
+		tmp /= 10;
+		m++;
+		val *= 10;
+	}
+	tmp = A;
+	int val2 = pow(10, n - m);
+	for(int i = 0; i <= n - m; i++){
+		if((tmp / val2 - B) % val == 0)
+			return i;
+		val2 /= 10;
+	}
+
+	return -1;
+}
+
+/*
+int Others::indexOfDigits(int A, int B){
+	if(B > A) return -1;
+	if(B == A) return 0;
+	int n = 1, m = 1, tmp = A, val = 10;
+	while(tmp >= 10){
+		tmp /= 10;
+		n++;
+	}
+	tmp = B;
+	while(tmp >= 10){
+		tmp /= 10;
+		m++;
+		val *= 10;
+	}
+	tmp = A;
+
+	//right first
+	for(int i = n - m; i >= 0; i--){
+		if((tmp - B) % val == 0)
+			return i;
+		tmp /= 10;
+	}
+	
+	return -1;
+}
+*/

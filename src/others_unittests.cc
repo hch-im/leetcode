@@ -23,3 +23,12 @@ TEST(Others, uniquePathsII){
 							  {0, 1, 0, 0, 0}};
 	EXPECT_EQ(1, ot.uniquePathsWithObstacles(v));
 }
+
+TEST(Others, indexOfDigits){
+	Others ot;
+	EXPECT_EQ(-1, ot.indexOfDigits(1, 0));
+	EXPECT_EQ(1, ot.indexOfDigits(121, 21));	
+	EXPECT_EQ(0, ot.indexOfDigits(197, 19));
+	EXPECT_EQ(4, ot.indexOfDigits(1976678, 678));
+
+}

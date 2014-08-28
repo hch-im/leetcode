@@ -71,6 +71,18 @@ There is one obstacle in the middle of a 3x3 grid as illustrated below.
 The total number of unique paths is 2.
 */
 	int uniquePathsWithObstacles(vector<vector<int> > &obstacleGrid);
+/*
+Given two integers A and B. There lengths are n and m (m <= n).
+Find the start indice of the digits of B that exist in A.
+
+For example,
+
+A = 76954, B = 95
+
+Then the algorithm should return 2.
+*/  
+  int indexOfDigits(int A, int B);
+
 };
 
 #endif
