@@ -172,11 +172,32 @@ int Others::indexOfDigits(int A, int B){
 */
 /*
   if *p == '*'
-  The decision tree has several branches (* mates 0, 1, ... , n chars in s)
-  
-  isMatch(s, p) = isMatch(s, p + 1) || isMatch(s + 1, p + 1) || ... || isMatch(s + n, p+1)
-                = isMatch(s, p + 1) || isMatch(s + 1, p)
+  The decision tree has several branches (* mates 0, 1, ... , n chars in s)  
+  	    = isMatch(s, p + 1) || isMatch(s + 1, p + 1) || ... || isMatch(s + n, p+1)
+        = isMatch(s, p + 1) || isMatch(s + 1, p)
+  else
+        = isMatch(s + 1, p + 1)
 
+The tricky part is that if we get another * when search in the left subtree of last *, 
+we do not need to search the right subtree of the last *.
+
+For example：s = aab...   p = *a*b... then we get the following tree structure.
+                   aab..., *a*b...
+             /                        \      
+     aab..., a*b...                ab..., *a*b...
+           /
+     ab..., *b...
+
+if ab... matches with *b..., searching only the left subtree gives the result.
+otherwise ab... and *a*b... will not match either.
+
+To prove it, we can assume 
+
+- ab... does not match *b...
+- ab... matches *a*b...
+
+However, from the second statement, we can prove that ab... matches *b... because 
+* matches *a.
 */    
 bool Others::isMatch(const char * s, const char * p){
 	if(s == NULL || p == NULL)
