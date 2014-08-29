@@ -153,3 +153,85 @@ int Others::indexOfDigits(int A, int B){
 	return -1;
 }
 */
+/*
+    bool Others::isMatch(const char *s, const char *p) {
+        // Start typing your C/C++ solution below
+        // DO NOT write int main() function
+         
+        const char* star=NULL;
+        const char* ss=s; 
+        while (*s){
+            if ((*p=='?')||(*p==*s)){s++;p++;continue;}
+            if (*p=='*'){star=p++; ss=s;continue;}
+            if (star){ p = star+1; s=++ss;continue;}
+            return false;
+        }
+        while (*p=='*'){p++;}
+        return !*p;
+    }
+*/
+/*
+  if *p == '*'
+  The decision tree has several branches (* mates 0, 1, ... , n chars in s)
+  
+  isMatch(s, p) = isMatch(s, p + 1) || isMatch(s + 1, p + 1) || ... || isMatch(s + n, p+1)
+                = isMatch(s, p + 1) || isMatch(s + 1, p)
+
+*/    
+bool Others::isMatch(const char * s, const char * p){
+	if(s == NULL || p == NULL)
+		return false;	
+	const char * p2 = NULL;
+	const char * s2 = NULL;
+	while(*s != '\0'){
+		cout<< *s << " - " <<*p<<endl;
+		switch(*p){
+			case '?':
+				s++; 
+				p++;
+				break;
+			case '*':
+				while(*p == '*') p++;
+				s2 = s + 1;	//record last start position
+				p2 = p - 1;
+//				return isMatch(s, p) || isMatch(s + 1, p - 1);	
+				break;	
+			default:
+				if(*s == *p){
+					s++;
+					p++;
+				} else if(p2 != NULL){
+					p = p2;
+					s = s2;
+				}else return false;
+			break;
+		}
+	}
+	while(*p == '*') p++;
+	return *p == '\0';
+}
+
+/*
+//Recursive solution
+bool Others::isMatch(const char * s, const char * p){
+	if(s == NULL || p == NULL)
+		return false;	
+	if(*s == '\0'){
+		if(*p == '\0' || (*p == '*' && *(p + 1) == '\0'))
+			return true;
+		else return false;
+	}
+	switch(*p){
+		case '\0':
+			return *s == '\0';
+		case '?':
+			return isMatch(s + 1, p + 1);
+		case '*':
+			while(*p == '*') p++;
+			return isMatch(s, p) || isMatch(s + 1, p - 1);		
+		default:
+			return *s == *p ? isMatch(s + 1, p + 1) : false;
+		break;
+	}
+}
+*/
